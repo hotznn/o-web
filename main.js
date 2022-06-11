@@ -208,6 +208,21 @@ module.exports = {
   go: async function(method, url, body, headers, proxy){
     return await woo.go(method, url, body, headers, proxy);
   },
+  data: function(nv){
+    var ret = {
+      data:[],
+      add: function(name, value){
+        this.data.push(name + "=" + encodeURIComponent(value));
+      },
+      build: function(){
+        return this.data.join("&");
+      }
+    };
+    for(var n in nv){
+      ret.add(n, nv[n]);
+    }
+    return ret;
+  },
   setlog: function(enabled){
     woo.log = enabled;
   },
