@@ -192,21 +192,21 @@ woo.go = function(method, url, body, headers, proxy){
     client.end();
   });
 }
-woo.get = async function(url, headers, proxy){
-  return await this.go("get", url, "", headers, proxy);
+woo.get = function(url, headers, proxy){
+  return this.go("get", url, "", headers, proxy);
 }
-woo.post = async function(url, body, headers, proxy){
-  return await this.go("post", url, body, headers, proxy);
+woo.post = function(url, body, headers, proxy){
+  return this.go("post", url, body, headers, proxy);
 }
 module.exports = {
-  get: async function(url, headers, proxy){
-    return await woo.get(url, headers, proxy);
+  get: function(url, headers, proxy){
+    return woo.get(url, headers, proxy);
   },
-  post: async function(url, body, headers, proxy){
-    return await woo.post(url, body, headers, proxy)
+  post: function(url, body, headers, proxy){
+    return woo.post(url, body, headers, proxy)
   },
-  go: async function(method, url, body, headers, proxy){
-    return await woo.go(method, url, body, headers, proxy);
+  go: function(method, url, body, headers, proxy){
+    return woo.go(method, url, body, headers, proxy);
   },
   data: function(nv){
     var ret = {
